@@ -1,0 +1,7 @@
+name: Publish Document
+account: rpubs
+server: rpubs.com
+bundleId:
+        https://api.rpubs.com/api/v1/document/112945/75d9eb4b3951442093e11de08a7212e4
+url: http://rpubs.com/xiurenyap/112945
+when: 1443331274.04999

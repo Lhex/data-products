@@ -1,0 +1,55 @@
+---
+title       : Diamond Price Predictor
+subtitle    : by carat
+author      : Xiu Ren Yap
+job         : 
+framework   : io2012        # {io2012, html5slides, shower, dzslides, ...}
+highlighter : highlight.js  # {highlight.js, prettify, highlight}
+hitheme     : tomorrow      # 
+widgets     : []            # {mathjax, quiz, bootstrap}
+mode        : selfcontained # {standalone, draft}
+knit        : slidify::knit2slides
+---
+
+## Aim
+
+This app makes a quick estimate of the price of a diamond based on the carat,
+so that one can make an informed choice before buying or selling a diamond.
+
+--- .class #id 
+
+## Method
+
+In our app, we use a linear model to fit through the data from the dataset of diamonds.
+Therefore, the prediction is but a very rough estimate.
+
+```{r model, echo = TRUE, warning=FALSE, message=FALSE}
+library(ggplot2)
+data(diamonds)
+modelFit <- lm(price ~ carat, data = diamonds)
+```
+
+--- .class #id 
+## Output
+
+From the model fit shown on the slide before, we estimate the price as below.
+Let's look at an example where user enters 2 carat.
+
+```{r priceEst, echo=TRUE}
+carat <- 2
+perCarat <- coef(modelFit)[2]
+intercept <- modelFit$coefficients[1]
+totalPrice <- as.numeric(intercept + carat * perCarat)
+totalPrice
+```
+
+where carat is the value obtained from the input from user.
+
+--- .class #id 
+## Further improvements in future versions
+
+- Future version of the app will include multivariate regression models.
+- This will result in better accuracy.
+
+
+
